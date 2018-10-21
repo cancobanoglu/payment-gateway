@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="./card.js"></script>
+<style>
+    .demo-container {
+        width: 100%;
+        max-width: 350px;
+        margin: 50px auto;
+    }
+
+    form {
+        margin: 30px;
+    }
+
+    input {
+        width: 200px;
+        height: 35px;
+        margin: 10px auto;
+        display: block;
+    }
+</style>
+<div class="demo-container">
+    <div class="card-wrapper"></div>
+
+    <div class="form-container active">
+        <form action="">
+            <input placeholder="Card number" type="tel" name="number">
+            <input placeholder="Full name" type="text" name="name">
+            <input placeholder="MM/YY" type="tel" name="expiry">
+            <input placeholder="CVC" type="number" name="cvc">
+        </form>
+    </div>
+</div>
+
+<script src="http://localhost:8080/card.js"></script>
+<script>
+    new Card({
+        form: document.querySelector('form'),
+        container: '.card-wrapper',
+        // Strings for translation - optional
+        messages: {
+            validDate: 'valid\ndate', // optional - default 'valid\nthru'
+            monthYear: 'mm/yyyy', // optional - default 'month/year'
+        },
+
+        // Default placeholders for rendered fields - optional
+        placeholders: {
+            number: '•••• •••• •••• ••••',
+            name: 'Full Name',
+            expiry: '••/••',
+            cvc: '•••'
+        },
+
+        masks: {
+            cardNumber: '•' // optional - mask card number
+        },
+
+        // if true, will log helpful messages for setting up Card
+        debug: false // optional - default false
+    });
+</script>
+</body>
+</html>
